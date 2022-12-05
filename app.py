@@ -307,14 +307,14 @@ def main():
 	
 	try:
 		hostFile = open('spacecore-cli.uri', 'r')
-		uri = hostFile.read()
+		uri = hostFile.read().strip()
 		hostFile.close()
 	except:
 		halt("Configuration error", "Could read uri file.")
 
 	try:
 		pwFile = open('spacecore-cli.pw', 'r')
-		password = pwFile.read()
+		password = pwFile.read().strip()
 		pwFile.close()
 	except:
 		halt("Configuration error", "Could read password file.")
