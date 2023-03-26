@@ -103,10 +103,20 @@ class RpcClient:
 		return self._request("product/list/noimg", query)
 
 	def productFindByName(self, name):
-		return self._request("product/find", name)
+		results = self._request("product/find", name)
+		results_filtered = []
+		for i in results:
+			if i["active"]:
+				results_filtered.append(i)
+		return results_filtered
 	
 	def productFindByIdentifier(self, identifier):
-		return self._request("product/findByIdentifier", identifier)
+		results = self._request("product/findByIdentifier", identifier)
+		results_filtered = []
+		for i in results:
+			if i["active"]:
+				results_filtered.append(i)
+		return results_filtered
 		
 	def productSetPrice(self, product, group, price):
 		return self._request("product/price/set", {"product_id":product, "group_id":group, "amount":price})
